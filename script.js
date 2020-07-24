@@ -77,9 +77,11 @@ function doubleMoney() {
 
 //Sorting the richest first
 
+//Did this by myself :D
 function sortHighest(){
     data = data.sort(function(a, b){
         return b.money - a.money
+        //descending order. Will show the richest first
     })
     updateDOM()
 }
