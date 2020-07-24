@@ -1,4 +1,4 @@
-const axios = require('axios')
+// const axios = require('axios')
 
 const main = document.getElementById('main')
 const addUserBtn = document.getElementById('add-user')
@@ -18,8 +18,9 @@ getRandomUser()
 
 async function getRandomUser () {
    const randomUsers = await axios.get('https://randomuser.me/api')
-   console.log(randomUser)
-   const user = randomUsers.results[0]
+   console.log(randomUsers)
+   const user = randomUsers.data.results[0].name
+   console.log(user)
    const newUser = {
         name: `${user.name.first} ${user.name.last}`,
         money: Money.floor(Math.random() * 1000000)
@@ -28,5 +29,5 @@ async function getRandomUser () {
 }
 
 function addData(obj){
-    data.push(obj)
+    return data.push(obj)
 }
