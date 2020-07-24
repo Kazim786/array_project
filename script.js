@@ -79,6 +79,7 @@ function doubleMoney() {
 
 //Did this by myself :D
 function sortHighest(){
+    //Added compare function in the parameter of the sort method because we are working with numbers
     data = data.sort(function(a, b){
         return b.money - a.money
         //descending order. Will show the richest first
