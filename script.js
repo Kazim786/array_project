@@ -88,6 +88,22 @@ function sortHighest(){
 }
 
 
+// function showMillionaires(){
+//     data = data.filter(function(item){
+//         if(item.money >= 1000000){
+//             updateDOM()
+//         }
+//     })
+// }
+
+function showMillionaires(){
+    data = data.filter(function(item){
+        item.money > 1000000
+        
+    })
+    updateDOM()
+}
+
 
 //Add event listener
 
@@ -96,5 +112,7 @@ addUserBtn.addEventListener('click', getRandomUser)
 
 doubleBtn.addEventListener('click', doubleMoney)
 
-showMillionairesBtn.addEventListener('click', sortHighest)
+sortBtn.addEventListener('click', sortHighest)
+
+showMillionairesBtn.addEventListener('click', showMillionaires)
 
