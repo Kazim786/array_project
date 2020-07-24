@@ -62,7 +62,7 @@ function formatMoney(number){
 
 }
 
-//Add event listener
+
 
 //double money Map
 function doubleMoney() {
@@ -74,8 +74,24 @@ function doubleMoney() {
     updateDOM()
 }
 
+
+//Sorting the richest first
+
+function sortHighest(){
+    data = data.sort(function(a, b){
+        return b.money - a.money
+    })
+    updateDOM()
+}
+
+
+
+//Add event listener
+
 addUserBtn.addEventListener('click', getRandomUser)
 
 
 doubleBtn.addEventListener('click', doubleMoney)
+
+showMillionairesBtn.addEventListener('click', sortHighest)
 
