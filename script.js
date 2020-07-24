@@ -7,7 +7,7 @@ const showMillionairesBtn = document.getElementById('show-millionaires')
 const sortBtn = document.getElementById('sort')
 const calculateWealthBtn = document.getElementById('calculate-wealth')
 
-
+//Array where we will store the data
 let data = []
 
 getRandomUser()
@@ -17,16 +17,23 @@ getRandomUser()
 //get random user and add money. I will use axios
 
 async function getRandomUser () {
-   const randomUsers = await axios.get('https://randomuser.me/api/')
-   console.log(randomUsers)
-//    const user = randomUsers.data.results[0].name
-const user = randomUsers.data.results[0]
-   console.log(user)
-   const newUser = {
-        name: `${user.name.first} ${user.name.last}`,
-        money: Math.floor(Math.random() * 1000000)
-   }
-   addData(newUser)
+    try{
+        const randomUsers = await axios.get('https://randomuser.me/api/')
+        console.log(randomUsers)
+     //    const user = randomUsers.data.results[0].name
+     const user = randomUsers.data.results[0]
+        console.log(user)
+        const newUser = {
+             name: `${user.name.first} ${user.name.last}`,
+             money: Math.floor(Math.random() * 1000000)
+        }
+        addData(newUser)
+
+    }
+    catch{
+        console.log('error')
+    }
+  
 }
 
 function addData(obj){
@@ -35,7 +42,7 @@ function addData(obj){
 }
 
 //UpdateDOM
-
+//Set default parameter to the data array
 function updateDOM(providedData = data){
     //Clear main div
     main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>'
@@ -57,5 +64,18 @@ function formatMoney(number){
 
 //Add event listener
 
+//double money Map
+function doubleMoney() {
+    data = data.map((user) => {
+        return {...user, money: user.money * 2}
+    })
+
+    //Everytime a change is made we have to call updateDOM()
+    updateDOM()
+}
+
 addUserBtn.addEventListener('click', getRandomUser)
+
+
+doubleBtn.addEventListener('click', doubleMoney)
 
