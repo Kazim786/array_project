@@ -109,7 +109,8 @@ function calculateWealth(){
     data = data.reduce((acc, user) => (acc += user.money), 0)
     formatMoney(data)
     const wealthElm = document.createElement('div')
-    wealthElm.innerHTML = `<h3>Total wealth: <strong>${formatMoney(wealth)}</strong> </h3>`
+    wealthElm.innerHTML = `<h3>Total wealth: <strong>${formatMoney(wealthElm)}</strong> </h3>`
+    
     main.appendChild(wealthElm)
     updateDOM()
 }
