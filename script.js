@@ -105,6 +105,17 @@ function showMillionaires(){
 }
 
 
+function calculateWealth(){
+    data = data.reduce((acc, user) => (acc += user.money), 0)
+    formatMoney(data)
+    const wealthElm = document.createElement('div')
+    wealthElm.innerHTML = `<h3>Total wealth: <strong>${formatMoney(wealth)}</strong> </h3>`
+    main.appendChild(wealthElm)
+    updateDOM()
+}
+
+
+
 //Add event listener
 
 addUserBtn.addEventListener('click', getRandomUser)
@@ -116,3 +127,4 @@ sortBtn.addEventListener('click', sortHighest)
 
 showMillionairesBtn.addEventListener('click', showMillionaires)
 
+calculateWealthBtn.addEventListener('click', calculateWealth)
